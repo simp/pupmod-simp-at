@@ -32,10 +32,13 @@ class at (
     ensure => 'absent'
   }
 
+  package { 'at': ensure => latest }
+
   service { 'atd':
     ensure     => 'running',
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
+    require    => Package['at']
   }
 }

@@ -1,3 +1,6 @@
+* Thu Mar 02 2017 Nick Miller <nick.miller@onxypoint.com> - 0.0.2
+- Manage at package
+
 * Wed Dec 7 2016 Nick Miller <nick.miller@onxypoint.com> - 0.0.1
 - First cut
 - Content moved from simplib, added tests
