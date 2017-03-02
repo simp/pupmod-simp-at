@@ -29,7 +29,8 @@ class at (
 }
 
   file { '/etc/at.deny':
-    ensure => 'absent'
+    ensure  => 'absent',
+    require => Package['at']
   }
 
   package { 'at': ensure => latest }
