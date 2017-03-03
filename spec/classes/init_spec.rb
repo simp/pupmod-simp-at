@@ -11,6 +11,7 @@ describe 'at' do
         context 'with default parameters' do
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to create_class('at') }
+          it { is_expected.to create_package('at') }
           it { is_expected.to create_at__user('root') }
           it { is_expected.to create_simpcat_build('at') }
           it { is_expected.to create_file('/etc/at.deny').with({:ensure => 'absent'}) }
