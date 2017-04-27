@@ -5,7 +5,8 @@
 #   An array of additional at users, using the defiend type at::user.
 #
 class at (
-  Array[String] $users = []
+  Array[String] $users = [],
+  String        $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
 ) {
 
   $users.each |String $user| {
@@ -33,7 +34,7 @@ class at (
     require => Package['at']
   }
 
-  package { 'at': ensure => latest }
+  package { 'at': ensure => $package_ensure }
 
   service { 'atd':
     ensure     => 'running',

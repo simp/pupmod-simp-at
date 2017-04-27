@@ -9,7 +9,7 @@ define at::user {
   $_name = regsubst($name,'/','__')
 
   simpcat_fragment { "at+${_name}.user":
-    content =>  "#${name}\n"
+    content =>  "${name}\n"
   }
 
 }
