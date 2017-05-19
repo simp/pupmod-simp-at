@@ -10,9 +10,9 @@ class at (
 ) {
 
   $users.each |String $user| {
-    ::at::user { $user: }
+    at::user { $user: }
   }
-  ::at::user { 'root': }
+  at::user { 'root': }
 
   simpcat_build { 'at':
     order            => ['*.user'],
@@ -25,9 +25,8 @@ class at (
     owner     => 'root',
     group     => 'root',
     mode      => '0600',
-    subscribe => Simpcat_build['at'],
-    audit     => 'content'
-}
+    subscribe => Simpcat_build['at']
+  }
 
   file { '/etc/at.deny':
     ensure  => 'absent',
