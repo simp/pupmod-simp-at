@@ -4,7 +4,7 @@
 #   The user to add to /etc/at.allow
 #
 define at::user {
-  include '::at'
+  include 'at'
 
   $_name = regsubst($name,'/','__')
 
