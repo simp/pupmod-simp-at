@@ -1,3 +1,6 @@
+* Sun Mar 11 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 0.0.4
+- Updated to work with Puppet 5 and OEL
+
 * Fri May 19 2017 Nick Miller <nick.miller@onyxpoint.com> - 0.0.3
 - Remove deprecated `audit` metaparameter
 - Update puppet dependency
