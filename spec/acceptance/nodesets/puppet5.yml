@@ -20,5 +20,6 @@ HOSTS:
 CONFIG:
   log_level: verbose
   type:      aio
+  puppet_collection: puppet5
   vagrant_memsize: 256
   ## vb_gui: true
