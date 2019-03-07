@@ -1,3 +1,7 @@
+* Thu Mar 07 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 0.0.6
+- Update the upper bound of stdlib to < 6.0.0
+- Update a URL in the README.md
+
 * Thu Nov 01 2018 Jeanne Greulich <jeanner.greulich@onyxpoint.com> - 0.0.5
 - Update static assets for puppet 5
 - Update to onyxpoint OEL boxes in acceptance tests
