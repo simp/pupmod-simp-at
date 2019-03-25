@@ -13,7 +13,7 @@ describe 'at' do
           it { is_expected.to create_class('at') }
           it { is_expected.to create_package('at') }
           it { is_expected.to create_at__user('root') }
-          it { is_expected.to create_simpcat_build('at') }
+          it { is_expected.to create_concat('/etc/at.allow') }
           it { is_expected.to create_file('/etc/at.deny').with({:ensure => 'absent'}) }
           it { is_expected.to create_service('atd').with({
             :ensure     => 'running',

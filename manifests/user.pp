@@ -6,10 +6,12 @@
 define at::user {
   include 'at'
 
-  $_name = regsubst($name,'/','__')
+  $_name = inline_template("<%= @name.strip %>")
+  $_safe_name = regsubst($_name,'/','__')
 
-  simpcat_fragment { "at+${_name}.user":
-    content =>  "${name}\n"
+  concat_fragment { "at+${_safe_name}.user":
+    target  => '/etc/at.allow',
+    content =>  $_name
   }
 
 }
