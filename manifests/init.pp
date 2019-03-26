@@ -14,18 +14,12 @@ class at (
   }
   at::user { 'root': }
 
-  simpcat_build { 'at':
-    order            => ['*.user'],
-    clean_whitespace => 'leading',
-    target           => '/etc/at.allow'
-  }
-
-  file { '/etc/at.allow':
-    ensure    => 'present',
-    owner     => 'root',
-    group     => 'root',
-    mode      => '0600',
-    subscribe => Simpcat_build['at']
+  concat { '/etc/at.allow':
+    order          => 'alpha',
+    owner          => 'root',
+    group          => 'root',
+    mode           => '0600',
+    ensure_newline => true
   }
 
   file { '/etc/at.deny':
