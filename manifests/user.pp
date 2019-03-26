@@ -6,7 +6,7 @@
 define at::user {
   include 'at'
 
-  $_name = inline_template("<%= @name.strip %>")
+  $_name = strip($name)
   $_safe_name = regsubst($_name,'/','__')
 
   concat_fragment { "at+${_safe_name}.user":
