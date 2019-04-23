@@ -1,3 +1,6 @@
+* Tue Apr 23 2019 Joseph Sharkey <shark.bruhaha@gmail.com> - 0.0.8
+- Updated .travis.yml, .gitlab-ci.yml, .ruby-version
+
 * Mon Mar 25 2019 Jeanne Greulich <jeanne.greulich@onyxpoint.com> - 0.0.7
 - replaced simpcat with concat
 - make sure the version of concat is updated
