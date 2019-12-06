@@ -13,7 +13,6 @@
 * [Setup](#setup)
   * [What at affects](#what-at-affects)
 * [Usage](#usage)
-* [Reference](#reference)
 * [Development](#development)
   * [Acceptance tests](#acceptance-tests)
 
@@ -22,6 +21,8 @@
 ## Description
 
 This module manages the at service and /etc/at.allow.
+
+See [REFERENCE.md](./REFERENCE.md) for additional information.
 
 ## This is a SIMP module
 This module is a component of the
@@ -33,7 +34,6 @@ If you find any issues, they can be submitted to our
 
 
 ## Setup
-
 
 ### What at affects
 
@@ -58,13 +58,6 @@ at::users:
   - foo
   - bar
 ```
-
-
-## Reference
-
-Please refer to the inline documentation within each source file, or to the
-module's generated `YARD` documentation for reference material.
-
 
 ## Development
 

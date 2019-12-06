@@ -1,8 +1,10 @@
-# This class manages /etc/at.allow and /etc/at.deny and the
-# atd service.
+# This class manages /etc/at.allow and /etc/at.deny and the atd service.
 #
 # @param users
-#   An array of additional at users, using the defiend type at::user.
+#   An array of additional at users, using the defiend type ``at::user``
+#
+# @param package_ensure
+#   The value of ``ensure`` for package resources
 #
 class at (
   Array[String] $users = [],
