@@ -1,37 +1,29 @@
-<%
-  if ENV['BEAKER_HYPERVISOR']
-    hypervisor = ENV['BEAKER_HYPERVISOR']
-  else
-    hypervisor = 'vagrant'
-  end
--%>
-# This nodeset spins up a simple one-host test VM for both EL6 and EL7
+---
 HOSTS:
   el7:
     roles:
-      - server
-      - default
-      - master
-    platform:   el-7-x86_64
-    box:        centos/7
-    hypervisor: <%= hypervisor %>
-
+    - server
+    - default
+    - master
+    platform: el-7-x86_64
+    box: centos/7
+    hypervisor: "<%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>"
+    family: centos-cloud/centos-7
+    gce_machine_type: n1-standard-2
   el8:
     roles:
-      - agent
-      - client
-    platform:   el-8-x86_64
-    box:        generic/centos8
-    hypervisor: <%= hypervisor %>
-
+    - agent
+    - client
+    platform: el-8-x86_64
+    box: generic/centos8
+    hypervisor: "<%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>"
+    family: centos-cloud/centos-stream-8
+    gce_machine_type: n1-standard-2
 CONFIG:
   log_level: verbose
-  type:      aio
+  type: aio
   vagrant_memsize: 256
   ssh:
     keepalive: true
     keepalive_interval: 1
-  ## vb_gui: true
-<% if ENV['BEAKER_PUPPET_COLLECTION'] -%>
-  puppet_collection: <%= ENV['BEAKER_PUPPET_COLLECTION'] %>
-<% end -%>
+  puppet_collection: "<%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet7') %>"
