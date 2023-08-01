@@ -10,7 +10,7 @@
 
 ### Defined types
 
-* [`at::user`](#atuser): Add the user $name to /etc/at.allow
+* [`at::user`](#at--user): Add the user $name to /etc/at.allow
 
 ## Classes
 
@@ -22,10 +22,10 @@ This class manages /etc/at.allow and /etc/at.deny and the atd service.
 
 The following parameters are available in the `at` class:
 
-* [`users`](#users)
-* [`package_ensure`](#package_ensure)
+* [`users`](#-at--users)
+* [`package_ensure`](#-at--package_ensure)
 
-##### <a name="users"></a>`users`
+##### <a name="-at--users"></a>`users`
 
 Data type: `Array[String]`
 
@@ -33,7 +33,7 @@ An array of additional at users, using the defiend type ``at::user``
 
 Default value: `[]`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-at--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -43,7 +43,7 @@ Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value
 
 ## Defined types
 
-### <a name="atuser"></a>`at::user`
+### <a name="at--user"></a>`at::user`
 
 Add the user $name to /etc/at.allow
 
@@ -51,9 +51,9 @@ Add the user $name to /etc/at.allow
 
 The following parameters are available in the `at::user` defined type:
 
-* [`name`](#name)
+* [`name`](#-at--user--name)
 
-##### <a name="name"></a>`name`
+##### <a name="-at--user--name"></a>`name`
 
 The user to add to /etc/at.allow
 
