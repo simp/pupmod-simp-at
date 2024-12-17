@@ -14,24 +14,28 @@ describe 'at' do
           it { is_expected.to create_package('at') }
           it { is_expected.to create_at__user('root') }
           it { is_expected.to create_concat('/etc/at.allow') }
-          it { is_expected.to create_file('/etc/at.deny').with({:ensure => 'absent'}) }
-          it { is_expected.to create_service('atd').with({
-            :ensure     => 'running',
-            :enable     => true,
-            :hasstatus  => true,
-            :hasrestart => true
-          }) }
+          it { is_expected.to create_file('/etc/at.deny').with({ ensure: 'absent' }) }
+          it {
+            is_expected.to create_service('atd').with({
+                                                        ensure: 'running',
+            enable: true,
+            hasstatus: true,
+            hasrestart: true
+                                                      })
+          }
         end
 
         context 'with a users parameter' do
-          let(:params) {{
-            :users => ['test','foo','bar']
-          }}
+          let(:params) do
+            {
+              users: ['test', 'foo', 'bar']
+            }
+          end
+
           it { is_expected.to create_at__user('test') }
           it { is_expected.to create_at__user('foo') }
           it { is_expected.to create_at__user('bar') }
         end
-
       end
     end
   end
