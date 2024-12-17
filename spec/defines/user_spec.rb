@@ -2,11 +2,9 @@ require 'spec_helper'
 
 describe 'at::user' do
   context 'supported operating systems' do
-    on_supported_os.each do |os, facts|
+    on_supported_os.each do |os, os_facts|
       context "on #{os}" do
-        let(:facts) do
-          facts
-        end
+        let(:facts) { os_facts }
 
         context 'with default parameters' do
           let(:title) { 'foobar' }
