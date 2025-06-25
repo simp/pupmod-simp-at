@@ -8,9 +8,8 @@
 #
 class at (
   Array[String] $users = [],
-  String        $package_ensure = simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })
+  String        $package_ensure = 'installed'
 ) {
-
   $users.each |String $user| {
     at::user { $user: }
   }
@@ -21,12 +20,12 @@ class at (
     owner          => 'root',
     group          => 'root',
     mode           => '0600',
-    ensure_newline => true
+    ensure_newline => true,
   }
 
   file { '/etc/at.deny':
     ensure  => 'absent',
-    require => Package['at']
+    require => Package['at'],
   }
 
   package { 'at': ensure => $package_ensure }
@@ -36,6 +35,6 @@ class at (
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
-    require    => Package['at']
+    require    => Package['at'],
   }
 }

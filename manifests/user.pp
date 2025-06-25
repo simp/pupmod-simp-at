@@ -11,7 +11,6 @@ define at::user {
 
   concat_fragment { "at+${_safe_name}.user":
     target  => '/etc/at.allow',
-    content =>  $_name
+    content => $_name,
   }
-
 }

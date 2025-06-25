@@ -39,9 +39,8 @@ root
 
       it 'adds users' do
         apply_manifest_on(host, manifest_users, catch_failures: true)
-        on(host, 'cat /etc/at.allow') do
-          expect(stdout).to match(expected_content)
-        end
+        at_allout_output = on(host, 'cat /etc/at.allow')
+        expect(at_allout_output.stdout).to match(expected_content)
       end
     end
   end
