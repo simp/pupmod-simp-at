@@ -1,23 +1,14 @@
 ---
 HOSTS:
-  el7:
+  el10:
     roles:
     - server
     - default
     - master
-    platform: el-7-x86_64
-    box: centos/7
+    platform: el-10-x86_64
+    box: generic/centos10s
     hypervisor: "<%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>"
-    family: centos-cloud/centos-7
-    gce_machine_type: n1-standard-2
-  el8:
-    roles:
-    - agent
-    - client
-    platform: el-8-x86_64
-    box: generic/centos8
-    hypervisor: "<%= ENV.fetch('BEAKER_HYPERVISOR', 'vagrant') %>"
-    family: centos-cloud/centos-stream-8
+    family: centos-cloud/centos-stream-10
     gce_machine_type: n1-standard-2
 CONFIG:
   log_level: verbose
@@ -26,4 +17,4 @@ CONFIG:
   ssh:
     keepalive: true
     keepalive_interval: 1
-  puppet_collection: "<%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'puppet7') %>"
+  puppet_collection: "<%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'openvox8') %>"
