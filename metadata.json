@@ -22,15 +22,8 @@
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "Amazon",
-      "operatingsystemrelease": [
-        "2"
-      ]
-    },
-    {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "8",
         "9",
         "10"
       ]
@@ -47,7 +40,6 @@
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "8",
-        "7",
         "9",
         "10"
       ]
