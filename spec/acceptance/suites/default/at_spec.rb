@@ -19,11 +19,11 @@ describe 'at class' do
   end
 
   let(:expected_content) do
-    <<-EOS
-george
-joe
-mary
-root
+    <<~EOS
+      george
+      joe
+      mary
+      root
     EOS
   end
 
