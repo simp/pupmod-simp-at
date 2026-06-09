@@ -1,12 +1,12 @@
 {
   "name": "simp-at",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "author": "SIMP Team",
   "summary": "A SIMP Puppet module for managing at",
   "license": "Apache-2.0",
   "source": "https://github.com/simp/pupmod-simp-at",
   "project_page": "https://github.com/simp/pupmod-simp-at",
-  "issues_url": "https://simp-project.atlassian.net",
+  "issues_url": "https://github.com/simp/pupmod-simp-at/issues",
   "tags": [
     "simp"
   ],
@@ -63,8 +63,8 @@
   ],
   "requirements": [
     {
-      "name": "puppet",
-      "version_requirement": ">= 7.0.0 < 9.0.0"
+      "name": "openvox",
+      "version_requirement": ">= 8.0.0 < 9.0.0"
     }
   ]
 }
