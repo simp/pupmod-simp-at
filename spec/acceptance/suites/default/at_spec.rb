@@ -37,8 +37,25 @@ describe 'at class' do
         apply_manifest_on(host, manifest, catch_changes: true)
       end
 
-      it 'reports no pending changes in noop mode after convergence' do
-        apply_manifest_on(host, manifest, catch_changes: true, noop: true)
+      # `catch_changes: true, noop: true` is not a valid check: `puppet apply
+      # --noop` always exits 0 regardless of pending changes, so that assertion
+      # can never fail. Real idempotency is covered above; here we verify the
+      # security-relevant end state on disk, which is the point of this module.
+      it 'enforces the hardened at.allow state on disk' do
+        apply_manifest_on(host, manifest, catch_failures: true)
+
+        # A readable allow-list leaks who may schedule at(1) jobs, so it must
+        # be root-owned and mode 0600.
+        perms = on(host, 'stat -c "%a %U %G" /etc/at.allow').stdout.strip
+        expect(perms).to eq('600 root root')
+
+        # root must always retain access to at(1).
+        expect(on(host, 'cat /etc/at.allow').stdout).to match(%r{^root$})
+
+        # /etc/at.deny must not exist: at.allow is the sole gate, and a present
+        # deny-list would change at(1) semantics. `test` exits non-zero (and
+        # beaker raises) if the file is present.
+        on(host, 'test ! -e /etc/at.deny')
       end
 
       it 'adds users' do
