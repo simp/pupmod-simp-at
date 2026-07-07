@@ -46,11 +46,10 @@ describe 'at' do
           it { is_expected.to create_at__user('foo') }
           it { is_expected.to create_at__user('bar') }
 
-          # root must always be permitted, in addition to any explicitly listed
-          # users -- otherwise enabling the allow-list would lock root out of
-          # at(1). The default-parameters context above only proves root is
-          # added when `users` is empty; this proves it is not dropped when
-          # users are supplied.
+          # root must always be permitted -- otherwise enabling the allow-list
+          # would lock root out of at(1). The manifest declares root
+          # unconditionally, independent of `users`, so this is a regression
+          # guard that root stays permitted regardless of what `users` contains.
           it { is_expected.to create_at__user('root') }
         end
       end
