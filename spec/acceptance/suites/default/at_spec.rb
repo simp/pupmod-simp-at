@@ -37,6 +37,10 @@ describe 'at class' do
         apply_manifest_on(host, manifest, catch_changes: true)
       end
 
+      it 'reports no pending changes in noop mode after convergence' do
+        apply_manifest_on(host, manifest, catch_changes: true, noop: true)
+      end
+
       it 'adds users' do
         apply_manifest_on(host, manifest_users, catch_failures: true)
         at_allout_output = on(host, 'cat /etc/at.allow')
