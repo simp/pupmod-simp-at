@@ -39,7 +39,7 @@ Data type: `String`
 
 The value of ``ensure`` for package resources
 
-Default value: `simplib::lookup('simp_options::package_ensure', { 'default_value' => 'installed' })`
+Default value: `'installed'`
 
 ## Defined types
 
