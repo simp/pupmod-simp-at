@@ -3,5 +3,3 @@ fixtures:
   repositories:
     stdlib: https://github.com/simp/puppetlabs-stdlib.git
     concat: https://github.com/simp/puppetlabs-concat.git
-  symlinks:
-    at: "#{source_dir}"
