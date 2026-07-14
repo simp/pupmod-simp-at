@@ -11,7 +11,18 @@ describe 'at' do
           it { is_expected.to create_class('at') }
           it { is_expected.to create_package('at') }
           it { is_expected.to create_at__user('root') }
-          it { is_expected.to create_concat('/etc/at.allow') }
+          # /etc/at.allow is the at(1) allow-list: only the users listed in it
+          # may schedule jobs. It must be root-owned and not world-readable (a
+          # readable allow-list leaks who is permitted to schedule work), so
+          # assert the mode/ownership, not merely that the file is managed.
+          it do
+            is_expected.to create_concat('/etc/at.allow')
+              .with(
+                owner: 'root',
+                group: 'root',
+                mode: '0600',
+              )
+          end
           it { is_expected.to create_file('/etc/at.deny').with({ ensure: 'absent' }) }
           it do
             is_expected.to create_service('atd')
@@ -34,6 +45,12 @@ describe 'at' do
           it { is_expected.to create_at__user('test') }
           it { is_expected.to create_at__user('foo') }
           it { is_expected.to create_at__user('bar') }
+
+          # root must always be permitted -- otherwise enabling the allow-list
+          # would lock root out of at(1). The manifest declares root
+          # unconditionally, independent of `users`, so this is a regression
+          # guard that root stays permitted regardless of what `users` contains.
+          it { is_expected.to create_at__user('root') }
         end
       end
     end
