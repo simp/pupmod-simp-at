@@ -80,7 +80,7 @@ bundle exec rake rubocop
 # Regenerate REFERENCE.md after changing manifest docstrings
 bundle exec puppet strings generate --format markdown --out REFERENCE.md
 
-# Acceptance tests (beaker; needs a hypervisor — CI uses vagrant_libvirt)
+# Acceptance tests (beaker; CI uses podman-backed container node sets)
 bundle exec rake beaker:suites[default]
 ```
 
