@@ -37,7 +37,8 @@ Default value: `[]`
 
 Data type: `String`
 
-The value of ``ensure`` for package resources
+The value of ``ensure`` for package resources. The ``atd`` service is only
+managed when the package is expected to be present (not ``absent`` or ``purged``).
 
 Default value: `'installed'`
 
