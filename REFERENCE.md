@@ -56,4 +56,3 @@ The following parameters are available in the `at::user` defined type:
 ##### <a name="-at--user--name"></a>`name`
 
 The user to add to /etc/at.allow
-
