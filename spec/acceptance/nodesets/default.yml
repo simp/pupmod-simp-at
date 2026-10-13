@@ -17,4 +17,4 @@ CONFIG:
   ssh:
     keepalive: true
     keepalive_interval: 1
-  puppet_collection: "<%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'openvox8') %>"
+  puppet_collection: "<%= ENV.fetch('BEAKER_PUPPET_COLLECTION', 'openvox9') %>"
